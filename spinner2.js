@@ -1,26 +1,19 @@
 // process.stdout.write('hello from spinner1.js... \rheyyy\n');
 
+//could also set an array of objects with their timer and character to print at each stage of the loop. Hmm...
+
 const spinner2 = function(howLong) {
+  const arrOfObj = ['\r| ', '\r/ ', '\r- ', '\r\\ '];
   let timeVar = 0;
-  for (let i = 0; i < howLong; i++) {
-    setTimeout(() => {
-      process.stdout.write('\r| ');
-    }, timeVar);
-    
-    setTimeout(() => {
-      process.stdout.write('\r/ ');
-    }, timeVar + 200);
-    
-    setTimeout(() => {
-      process.stdout.write('\r- ');
-    }, timeVar + 400);
-    
-    setTimeout(() => {
-      process.stdout.write('\r\\ ');
-    }, timeVar + 600);
-    timeVar += timeVar;
+  while (timeVar < howLong) {
+    for (let i = 0; i < arrOfObj.length; i++) {
+      setTimeout(() => {
+        process.stdout.write(arrOfObj[i]);
+      }, timeVar);
+      timeVar += 200;
+    }
   }
   console.log("\n");
 };
 
-console.log(spinner2(6400));
+// console.log(spinner2(6400));
